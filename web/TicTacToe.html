@@ -1,0 +1,179 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <style>
+          body {
+            background-color:gray;
+          }
+          td {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #555;
+            cursor: pointer; 
+          }
+          .table {
+            border-collapse: collapse;
+            width: 600px;
+            margin: 0 auto; 
+          }
+          .cross:before {    
+            content: "x";
+            color: lightblue;
+            font-size: 100px; 
+          }
+          .circle:before {
+            content: "o";
+            color: lightgreen;
+            font-size: 100px; 
+          }
+          .resetButton {
+            width: 300px;
+            height: 50px; 
+          }
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <h1 class='col-lg-12 text-center'><b>Tic-Tac-Toe</b></h1>
+        </div>
+        <div class='col-lg-12 text-center'>
+            <h3 class='turnDisplay'></h3>
+        </div>
+          <table class = 'table'>
+            <tr>
+              <td class='square11 text-center'></td>
+              <td class='square12 text-center'></td>
+              <td class='square13 text-center'></td>
+            </tr>
+            <tr>
+              <td class='square21 text-center'></td>
+              <td class='square22 text-center'></td>
+              <td class='square23 text-center'></td>
+            </tr>
+            <tr>
+              <td class='square31 text-center'></td>
+              <td class='square32 text-center'></td>
+              <td class='square33 text-center'></td>
+            </tr>
+          </table>
+        <br>
+        <div class='col-lg-12 text-center'>
+            <input class='resetButton' type="button" value="Reset"></input>
+        </div>
+      <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+      <script>
+      /*global $*/
+      //Script variables and HTML reference.
+      let player = 1;
+      let table = $('.table');
+      let turn = $('.turnDisplay');
+      let round = 0;
+      let gameArray = [
+          ['0', '0', '0'],
+          ['0', '0', '0'], 
+          ['0', '0', '0']
+      ];
+      //Ensure page is loaded before running script
+      $(function() {
+        //Display first turn.
+        changeTurn();
+        
+        //Set up cell click handler.
+        setCellClick();
+        
+        //Set up reset clickk handler
+        setReset();
+      });
+      
+      //Function to reset game array.
+      function clearGameArray() {
+        gameArray = [
+          ['0', '0', '0'],
+          ['0', '0', '0'], 
+          ['0', '0', '0']
+        ];
+      }
+      
+      
+       //Function to set up cell click event handler.
+      function setCellClick(){
+        //Cell click handler.
+        $('td').click(function() {
+          let td = $(this);
+          let row = this.parentNode.rowIndex;
+          let col = this.cellIndex;
+          //Check if the selected cell has been clicked yet.
+          
+          if(gameArray[row][col] != 0) return alert('Box already checked!');
+          
+          round++;
+          //If the cell hasn't been clicked and player 1 clicked it, update cell, turn, and check for win.
+          if (player == 1) {
+            gameArray[row][col] = 1;
+            updateCell(td, 1);
+            player = 2;
+            changeTurn();
+            //Check if player 1 has won. Add information to session storage if so.
+            if (checkWin(1)) {
+             round = 0;
+             sessionStorage.setItem('winner', 'Player 1');
+             window.location = 'Congrats.html';
+            }
+          //If the cell hasn't been clicked and player 2 clicks it, update cell, turn, and check for win.
+          } else {
+            gameArray[row][col] = 2;
+            updateCell(td, 2);
+            player = 1;
+            changeTurn();
+            if (checkWin(2)) {
+             round = 0;
+             sessionStorage.setItem('winner', 'Player 2');
+             window.location = 'Congrats.html';
+            }
+          }
+          //Check if a draw has occured. Display message if so.
+          if (round == 9) turn.html('Draw! Press \'Reset\' to play again.');
+        });
+      }
+      
+      function changeTurn() {
+        turn.html('Player turn : '+ player);
+      }
+      
+      function updateCell(td, player) {
+        if (player == 1) td.addClass('cross');
+        else if (player == 2) td.addClass('circle');
+        else td.removeClass('circle').removeClass('cross');
+      }
+            
+            
+      //Function to set up reset button event handler.
+      function setReset(){
+        $('.resetButton').click(function() {
+          round = 0;
+          player = 1;
+          changeTurn();
+          clearGameArray();
+          table.find('td').each(function() {
+            updateCell($(this), 0);    
+          });
+        });
+      }
+      
+      //Function to check if a player has won.
+      function checkWin(player) {
+        if (gameArray[0][0] == player && gameArray[0][1] == player && gameArray[0][2] == player) return true;
+        if (gameArray[0][0] == player && gameArray[1][0] == player && gameArray[2][0] == player) return true;
+        if (gameArray[0][0] == player && gameArray[1][1] == player && gameArray[2][2] == player) return true; 
+        if (gameArray[1][0] == player && gameArray[1][1] == player && gameArray[1][2] == player) return true; 
+        if (gameArray[2][0] == player && gameArray[2][1] == player && gameArray[2][2] == player) return true; 
+        if (gameArray[0][1] == player && gameArray[1][1] == player && gameArray[2][1] == player) return true;
+        if (gameArray[0][2] == player && gameArray[1][2] == player && gameArray[2][2] == player) return true; 
+        if (gameArray[0][2] == player && gameArray[1][1] == player && gameArray[2][0] == player) return true;
+        return false;
+      }
+    </script>
+    </body>
+</html>    

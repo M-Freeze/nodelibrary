@@ -1,0 +1,8 @@
+{"level":"info","message":"\u001b[34mListening on port \u001b[39m\u001b[34m\u001b[4m8080\u001b[24m\u001b[39m","timestamp":"2:29:20 AM"}
+{"level":"info","message":"\u001b[34mSuccessful request to root\u001b[39m\u001b[34m\u001b[4m[object Object]\u001b[24m\u001b[39m","timestamp":"2:29:22 AM"}
+{"level":"warn","message":"\u001b[33mAttempt to view non-existent page:\u001b[39m\u001b[33m\u001b[4m[object Object]\u001b[24m\u001b[39m","timestamp":"2:29:39 AM"}
+{"level":"info","message":"\u001b[34mSuccessful request to root\u001b[39m\u001b[34m\u001b[4m[object Object]\u001b[24m\u001b[39m","timestamp":"2:29:44 AM"}
+{"level":"warn","message":"\u001b[33mAttempt to view non-existent page:\u001b[39m[object Object]","timestamp":"2:32:29 AM"}
+{"level":"warn","message":"\u001b[33mAttempt to view non-existent page\u001b[39m","timestamp":"2:33:00 AM"}
+{"level":"info","message":"\u001b[34mSuccessful request to root\u001b[39m","timestamp":"2:33:28 AM"}
+{"level":"warn","message":"\u001b[33mAttempt to view non-existent page\u001b[39m","timestamp":"2:33:36 AM"}

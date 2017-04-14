@@ -1,0 +1,18 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+    </head>
+    <body style='background-color:gray'>
+        <h1 class='col-lg-12 text-center'>Congratulations </h1>
+        <iframe class='col-lg-12 text-center' width='100%' height='90%' src="https://www.youtube.com/embed/1Bix44C1EzY?rel=0&autoplay=1" frameborder="0"></iframe>
+    </body>
+    <script>
+    //Get winner from session storage and add it to header.
+     $(function() {
+         $("h1").append(sessionStorage.getItem('winner') + '!');
+     });
+    </script>
+</html>    

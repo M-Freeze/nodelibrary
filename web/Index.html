@@ -1,0 +1,122 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+    <style>
+        body{
+            background-color: gray;
+        }
+        img{
+            width: 300px;
+            height: 230px;
+            margin-bottom: 20px;
+        }
+        footer{
+            margin-top: 30px;
+            margin-left: 10px;
+            font-size: 10px;
+        }
+        h1{
+            font-size: 50px;
+        }
+        .enabled{
+            cursor: pointer;
+        }
+        .disabled{
+            filter: blur(10px);
+            cursor: not-allowed;
+        }
+        .gameTitle{
+            font-size: 30px;
+            margin-top: 60px;
+            margin-bottom: 20px;
+        }
+        .subText {
+            font-size: 10px
+        }
+    </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1 class='col-lg-12 text-center'>Select a Game</h1>
+            <div class='row'>
+                <div class='col-lg-4 gameTitle text-center'>Tic-Tac-Toe
+                    <br>
+                    <div class = 'subtext'>Click to Play!</div>
+                    <br>
+                    <img class = 'tictactoeImg' src="pics/tictactoe.png" alt="TicTacToe">
+                </div>
+                <div class='col-lg-4 gameTitle text-center'>Checkers
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class = 'checkersImg' src="pics/checkers.jpeg" alt="Checkers">
+                </div>
+                <div class='col-lg-4 gameTitle text-center'>Memory Match
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class= 'matchinggameImg' src="pics/matchinggame.png" alt="MemoryMatch">
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-lg-4 gameTitle text-center'>Chess
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class = 'chessImg' src="pics/chess.png" alt="Chess">
+                </div>
+                <div class='col-lg-4 gameTitle text-center'>Battleship
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class = 'battleshipImg' src="pics/battleship.jpeg" alt="Battleship">
+                </div>
+                <div class='col-lg-4 gameTitle text-center'>Minesweeper
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class = 'minesweeperImg' src="pics/minesweeper.png" alt="Minesweeper">
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-lg-4 gameTitle text-center'>Go
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class = 'goImg' src="pics/go.jpg" alt="Go">
+                </div>
+                <div class='col-lg-4 gameTitle text-center'>Chinese Checkers
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class = 'chinesecheckersImg' src="pics/chinesecheckers.jpg" alt="ChineseCheckers">
+                </div>
+                <div class='col-lg-4 gameTitle text-center'>Backgammon
+                    <br>
+                    <div class = 'subText'>Coming Soon!</div>
+                    <br>
+                    <img class = 'backgammonImg' src="pics/backgammon.png" alt="Backgammon">
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>Website created by: Matt Freeze</p>
+        </footer>
+    </body>
+    <script>
+    //Go to tictactoe when image is clicked.
+    $(function() {
+        $('body').find('img').each(function() {
+            if ($(this).hasClass('tictactoeImg')) $(this).addClass('enabled');
+            else $(this).addClass('disabled');
+        });
+        
+        $('.tictactoeImg').click(function(){
+            window.location = 'TicTacToe.html';
+        });
+    });
+    </script>
+</html>
