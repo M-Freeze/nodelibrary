@@ -8,10 +8,10 @@ var winston = require('winston');
 var colors = require('colors');
 var nconf = require('nconf');
 
-//Create time formatter to log time.
+//Create time formatter to log time
 const tsFormat = () => (new Date()).toLocaleTimeString();
 
-//Create winston logger and have it log 'info' level and higher to both console and file.
+//Create winston logger and have it log 'info' level and higher to both console and file
 const logger = new (winston.Logger)({
   transports: [
     //Console output
@@ -43,13 +43,13 @@ app.get(`/`, function (req, res) {
     logger.info('Successful request to root.'.blue);
 });
 
-//Handle 404 errors and log them.
+//Handle 404 errors and log them
 app.get(`*`, function (req, res) {
     res.status(404).sendFile(`${WEB}/404.html`);
     logger.warn('Attempt to view non-existent page.'.yellow);
 });
 
-//Start server andd log that it has started
+//Start server and log that it has started
 app.listen(8080, function () {
     logger.info('Listening on port '.blue + (String)(nconf.get("port")).underline.blue);
 });
